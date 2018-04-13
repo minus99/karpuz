@@ -1,29 +1,64 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { Text, View, TextInput, Button } from 'react-native';
 
-class App extends React.Component {
+import Item from './Item';
+
+global = require('./global.js');
+
+class UselessTextInput extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on  sadas your app!</Text>
-      </View>
+      <TextInput
+        {...this.props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
+        editable = {true}
+        maxLength = {40}
+      />
     );
   }
 }
 
+export default class Login extends React.Component {
 
-export default StackNavigator({
-  Home: {
-    screen: App,
-  },
-});
+  static navigationOptions = {
+    title: 'Karpuz',
+    headerStyle:{ backgroundColor: '#377BCE' },
+    headerTitleStyle:{ color: '#ffffff'},
+    headerLeft: null,
+  }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  constructor(props) {
+    super(props);
+    this.state = {
+      text1: 'kullanıcı adı',
+      text2: 'şifre',
+      user: null,
+      pass: null,
+      isLoading: false,
+      message: '',
+      stateLoaded:false,
+    };
+  }
+
+  onPressLearnMore(){
+
+
+
+    console.log('dsadasdasd');
+  }
+
+  render() {
+    return (
+      <View>
+        <UselessTextInput placeholder={this.state.text1} />
+        <UselessTextInput placeholder={this.state.text2} secureTextEntry={true} />
+        <Button
+        onPress={this.onPressLearnMore}
+        title="Login"
+        color="#841584"
+      />
+
+      <Item />
+      </View>
+    );
+  }
+}
