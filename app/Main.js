@@ -1,29 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
+import List from './List';
 
-class App extends React.Component {
+class MainPage extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on  sadas your app!</Text>
+      <View style={{flex:1}}>
+        <List />
       </View>
     );
   }
 }
 
 
-export default StackNavigator({
-  Home: {
-    screen: App,
-  },
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+export default TabNavigator({
+  Main: {
+    screen: MainPage,
   },
 });

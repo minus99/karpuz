@@ -11,8 +11,20 @@ export default class Item extends Component {
         super(props);
     }
     
+    _renderItem = ()=>{
+        const { typ } = this.props.data;
+        console.log(typ);
+        return(
+            <View>
+                <Text>{ typ }</Text>
+            </View>
+        )
+    }
+
     render() {
-        const B = (props) => <Text style={{fontWeight: 'bold', lineHeight: 19}}>{props.children}</Text>
+        const lineHeight = 24;
+        const B = (props) => <Text style={{fontWeight: 'bold', lineHeight: lineHeight}}>{props.children}</Text>
+        const { name } = this.props.data;
 
         return (
             <View style={{ flexDirection: 'row', padding: 10 }}>
@@ -30,13 +42,13 @@ export default class Item extends Component {
                     <View>
                     <TouchableOpacity activeOpacity={0.8} onPress={this._onPressButton}>
                         <Text style={{fontFamily: 'Graphik-Regular'}}>
-                            <Text>2017 stajyer 4.2 Puan toplam </Text> 
-                            <B>Monitise</B>
-                            <Text> 'ye vermiş.</Text>
-                            <Text style={{color: '#ADABAB'}}> 7 dk önce</Text>
+                            <Text style={{fontWeight: 'bold', lineHeight: lineHeight}}>{ name }</Text> 
+                            <B style={{fontWeight: 'bold', lineHeight: lineHeight}}>Monitise</B>
+                            <Text style={{fontWeight: 'bold', lineHeight: lineHeight}}> 'ye vermiş.</Text>
+                            <Text style={{color: '#ADABAB', lineHeight: lineHeight}}> 7 dk önce</Text>
                         </Text>
                     </TouchableOpacity>
-
+                        {this._renderItem()}
                     </View>
                     <View style={{ height: 30, flexDirection: 'row', alignSelf: 'flex-end' }}>
                         <TouchableOpacity activeOpacity={0.8} onPress={this._onPressButton}>

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, TextInput, Button } from 'react-native';
 
-import Item from './Item';
-
 global = require('./global.js');
 
 class UselessTextInput extends React.Component {
@@ -40,10 +38,7 @@ export default class Login extends React.Component {
   }
 
   onPressLearnMore(){
-
-
-
-    console.log('dsadasdasd');
+    this.props.navigation.navigate('Main');
   }
 
   render() {
@@ -52,12 +47,11 @@ export default class Login extends React.Component {
         <UselessTextInput placeholder={this.state.text1} />
         <UselessTextInput placeholder={this.state.text2} secureTextEntry={true} />
         <Button
-        onPress={this.onPressLearnMore}
+        onPress={this.onPressLearnMore.bind(this)}
         title="Login"
         color="#841584"
       />
 
-      <Item />
       </View>
     );
   }

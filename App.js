@@ -10,6 +10,7 @@ import {
 
 import Splash from './app/Splash'; 
 import Login from './app/Login'; 
+import MainPage from './app/Main'; 
 
 
 export default class App extends Component{
@@ -20,6 +21,10 @@ export default class App extends Component{
 
   _loadResourcesAsync = async () => {
     return Promise.all([
+      Asset.loadAsync([
+        require('./assets/like.png'),
+        require('./assets/unlike.png'),
+      ]),
       Font.loadAsync({
         'Graphik-Medium': require('./assets/fonts/Graphik-Medium.ttf'),
         'Graphik-Regular': require('./assets/fonts/Graphik-Regular.ttf'),
@@ -73,6 +78,9 @@ const RootNavigator = StackNavigator(
     },
     Logins: {
       screen: Login,
+    },
+    Main: {
+      screen: MainPage,
     },
   },
 
